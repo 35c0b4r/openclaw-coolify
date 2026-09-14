@@ -1,0 +1,49 @@
+{
+  "gateway": {
+    "mode": "local",
+    "port": 18789,
+    "bind": "lan",
+    "auth": {
+      "mode": "token"
+    },
+    "controlUi": {
+      "enabled": true,
+      "allowedOrigins": [
+        "https://claw.iamahad.com"
+      ]
+    }
+  },
+
+  "models": {
+    "providers": {
+      "ollama": {
+        "baseUrl": "http://192.168.110.146:11434",
+        "apiKey": "ollama-local",
+        "api": "ollama",
+        "timeoutSeconds": 300,
+        "models": [
+          {
+            "id": "qwen3:8b",
+            "name": "qwen3:8b",
+            "input": [
+              "text"
+            ],
+            "contextTokens": 32768,
+            "params": {
+              "num_ctx": 32768,
+              "keep_alive": "15m"
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "ollama/qwen3:8b"
+      }
+    }
+  }
+}

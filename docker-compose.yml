@@ -1,0 +1,18 @@
+services:
+  openclaw-gateway:
+    image: ghcr.io/openclaw/openclaw:latest
+
+    environment:
+      OPENCLAW_GATEWAY_PORT: "18789"
+      OPENCLAW_GATEWAY_TOKEN: "${OPENCLAW_GATEWAY_TOKEN}"
+
+    volumes:
+      - openclaw_data:/home/node/.openclaw
+
+    ports:
+      - "18789:18789"
+
+    restart: unless-stopped
+
+volumes:
+  openclaw_data:
